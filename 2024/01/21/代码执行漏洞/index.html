@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>代码执行漏洞 | ooqo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.0.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">代码执行漏洞</h1><a id="logo" href="/.">ooqo</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">代码执行漏洞</h1><div class="post-meta">2024-01-21<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 319</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 1</span><span class="post-meta-item-text"> Minutes</span></span></span></div><div class="post-content"><p>核心：用户输入的数据被当做后端代码执行</p>
+<p> 一句话木马本质：代码执行漏洞 &lt;?php @eval($_REQUEST[8])?&gt;</p>
+<p>名词界限模糊：</p>
+<p>​	poc：验证脚本(验证漏洞存在)</p>
+<p>​	exp: 利用脚本</p>
+<p>RCE （远程命令或代码执行）-&gt;用户输入的数据被当系统&#x2F;后端代码执行  </p>
+<p>文件包含、反序列化、命令执行属于RCE(范围广)</p>
+<p>区别：</p>
+<p>代码执行：用户输入的数据被当后端代码执行 (var_dump())</p>
+<p>命令执行：用户输入的数据被当系统命令执行 (cmd bash)</p>
+<p>后端代码可以调用系统函数 </p>
+<p>系统命令可以写文件产生webshell</p>
+<p>1.eval($a);&#x2F;&#x2F;将字符串当做后端代码执行，且可以多行</p>
+<p>2.assert($a);&#x2F;&#x2F;将字符串当做后端代码执行，单行</p>
+<p>写文件执行 file_put_contents()</p>
+<p>3.echo preg_replace(‘&#x2F;b&#x2F;e’,$_GET[8],’bc’);             (正则表达式，替换成的值，原有值)</p>
+<ul>
+<li><p>原有字符串必须匹配正则表达式</p>
+</li>
+<li><p>修正符:e 配合函数preg_replace()使用, 可以把匹配来的字符串当作正则表达式执行;   </p>
+</li>
+<li><p>\b 表示单词边界  边界 指的是占位的字符左右的间隙位置。</p>
+</li>
+</ul>
+<p>4.create_function()       &#x2F;&#x2F;匿名函数</p>
+<?php
+
+  $a=create_function('$id','echo $id;)
+
+  $a(10);
+
+?>
+
+<p>$a&#x3D;crate_function(‘’,$_REQUEST[8]);    – 传参8&#x3D;}phpinfo();&#x2F;&#x2F;</p>
+<p>5.$__GET[1]($_GET[2]);        –传参1&#x3D;assert&amp;2&#x3D;phpinfo();     </p>
+<p>X(Y) X函数名 Y传参值 一般都能当一句话木马</p>
+<p>eval()不行 eval不是函数,php的特殊写法</p>
+<p>防护：php disable_function 禁用函数 (eval()不受影响)</p>
+<p>6.array_map(要调用的函数，传参) 回调函数 把数组里面的东西放到函数内多次执行</p>
+<p> <img src="/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/image-20240126160001138.png"></p>
+<p>array_map(‘assert’,$_REQUEST)  $_REQUEST[8]字符串 $_REQUESR数组 –传参 aa&#x3D;phpinfo();</p>
+<p>array_map,assert,base64,dcode,eval 任何一个被禁用，就连不了菜刀</p>
+<p>php还有很多回调函数</p>
+<ol start="7">
+<li></li>
+</ol>
+<p>“${phpinfo()}”;   &#x2F;&#x2F;5.5.38以上 核心:字符串二次解析  双引号解析漏洞</p>
+<p>必须写在php文件里，不能通过传参</p>
+<p>什么情况可以把东西写入php文件（cms数据库连接的时候）</p>
+<p>conn db config</p>
+<p>通过安装的方法拿shell</p>
+<p>1.直接单双引号闭合</p>
+<p>2.双引号解析漏洞</p>
+</div><script type="text/javascript" src="/js/share.js?v=1.0.0" async></script><a class="article-share-link" data-url="http://example.com/2024/01/21/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" data-id="cls2olw6a0003pssn7alv96cb" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIElEQVR42u3awY7iMBAEUP7/p9nrSDtAVduRJublhCAkeebQuKsfj/h4/jh+vrP39f93TJ7h1RU2HNjY2Ng3YT/fHu9v8Oqc9goJIF/E90+CjY2NfSo7v027WMm92gKW3/Hl+9jY2Nhfz06KUFJI8sV6f2VsbGxs7Nlf//VlWv8UGxsbG7v9i5+0gdpCNVvWvGRiY2Njn81uWzx/+fUl+TY2Njb2H2Y/yyP57nrBmxXFQoGNjY19EDsvALsC3XZZ3y/i7PmxsbGxT2UnbaCkIM2i3Dw2bkd8mpXAxsbGvit7VjbWG/frS5kXyw8LgY2NjX1bdtsq2hvo5uyVeAAbGxv7O9nrA5T5Q+wdwYzOx8bGxj6IPSsqSVTQbmnyjUreQvrww2BjY2MfxF6PCvYWvHZkZ0NggI2NjX1bdjs6k28D8vK2Hi3XY0bY2NjYB7Hbtnve+m+HL/MwYD0wwMbGxv4G9q6x9fZ1XvDa7cov52NjY2MfwU4a/fkmJLlOuwRtxBu1vbCxsbGPY+f/0tvAtY2E22B4FhJjY2Njn8SeFY+VBlMeAMzKZHImNjY29knstok/KxttkJwPgOaRxnDaFBsbG/sm7NmYTlt+2o1KGznkz4aNjY19Ent20bx9c0XkMHsebGxs7FPZs+KRbBvaicf1bxUhATY2NvZB7Hx4sR18vKLS5vdtfwxsbGzs+7KTi87CgF0xw/rc+y9nYmNjYx/EzsHX3X5W2B7xUWw/sLGxsW/IzgtYuy3JF2IWCS8Nj2JjY2MfxM43EjPkFWWsDZU/JNvY2NjYB7FXGHk7aVacZlugD/sObGxs7K9ht7dpR3nywpMswYZ4ABsbG/u27LbBtL5JaNtPs2HQYlYUGxsb+4bsZ3msfCsPj2excT7iiY2NjX0Suy1R7aDkykO3m5m2wYSNjY19ErttwbfFrF3W2dBnG1FgY2Njn8duC8MVkXAe0842GNjY2NjYs+1B8ulKS2sWUWBjY2NjzxZiOF4Tt5/ywSNsbGzs89izsrHSAMqDh73Pho2NjX0eezZemWwAZsM6s4LULhY2Njb2Eex/QBv4dAH44aEAAAAASUVORK5CYII=">Share</a><div class="tags"></div><div class="post-nav"><a class="pre" href="/2024/01/26/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">任意文件包含漏洞</a><a class="next" href="/2023/12/21/XXE/">XXE</a></div><script src="https://utteranc.es/client.js" repo="123library/123library.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async></script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/head.jpg"/></a><p>永远探索，永远好奇。</p><a class="info-icon" title="Twitter" target="_blank" style="margin-inline:5px"> <i class="fa fa-twitter-square" style="margin-inline:5px"></i></a><a class="info-icon" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/01/26/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">任意文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/21/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">代码执行漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/21/XXE/">XXE</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/20/ssrf/">ssrf</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/19/%E6%94%AF%E4%BB%98%E6%BC%8F%E6%B4%9E%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/">支付漏洞、越权漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/18/hello/">hello</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a title="暂无" target="_blank">暂无</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/." rel="nofollow">ooqo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>

