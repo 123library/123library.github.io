@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-09-29 23:49:28'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" title="支付、越权漏洞">支付、越权漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T15:02:16.000Z" title="Created 2024-09-29 23:02:16">2024-09-29</time></span></div><div class="content">支付漏洞属于逻辑漏洞  发散思维
+快捷支付原理 商户网站接入支付结果有两种方式：
+(1)浏览器跳转通知 很少
+用户支付成功直接关闭页面，商户收不到支付结果通知。且浏览器数据包易篡改
+(2)服务器端异步通知  一般
+该方式是支付公司服务器后台直接向用户指定的异步通知URL发送参数，采用POST或GET的方式。商户网站接收异部参数的URL对应的程序中，要对支付公司返回的支付结果进行签名验证，成功后进行支付逻辑处理，如验证金额、订单信息是否与发起支付时一致，验证正常则对订单进行状态处理或为用户进行网站内入账等
+常见支付漏洞1.修改支付价格
+支付—订购、订单、付款
+三个步骤当中的随便一个步骤进行修改价格测试，如果前面两步有验证机制，那么你可在最后一步付款时进行抓包尝试修改金额，如果没有在最后一步做好检验，那么问题就会存在，其修改的金额值你可以尝试小数目或者尝试负数。
+2.修改支付状态
+把付过款的orderid给未付款的，未付款订单变为已付款
+3.修改订单数量
+88*(-1)+88*1&#x3D;0
+4.修改优惠券
+5.越权支付
+如何挖掘找到关键数据包
+分析数据包 对各个参数(账号，金额，余额， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="任意文件包含漏洞">任意文件包含漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T15:02:00.000Z" title="Created 2024-09-29 23:02:00">2024-09-29</time></span></div><div class="content">文件包含（不是漏洞 是功能）
+相同代码重复出现在不同文件 冗余 -&gt;文件包含 更高效
+函数 include()  –临时加载引用  包含文件不存在 仍会往下执行
+require()  –在运行php之前读取文件一起执行 包含文件不存在,停止
+只包含一次：
+include_once()
+require_once()
+1.php
+&lt;?phpecho &#39;a&#39;;?&gt;
+2.php
+&lt;?phpecho &#39;aaaaaaaaaaaaa&lt;br/&gt;&#39;;
+include(&#39;1.php&#39;);echo &#39;       aaaaaaaaaaaaa   &#39;;?&gt;
+任意文件包含(漏洞) :可以通过目标包含**文件
+危害：任意文件都可被当作php执行
+RFI&#x2F;LFI -&gt;远程文件包含  本地文件包含
+R –remote                 L–local
+本地文件包含:要包含的文件必须在目标主机上
+远程文件包含：无论文件在哪里只要能访问到 
+​		php默认不开启  [开启 allow_ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" title="代码执行漏洞">代码执行漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T15:01:18.000Z" title="Created 2024-09-29 23:01:18">2024-09-29</time></span></div><div class="content">核心：用户输入的数据被当做后端代码执行
+ 一句话木马本质：代码执行漏洞 &lt;?php @eval($_REQUEST[8])?&gt;
+名词界限模糊：
+​	poc：验证脚本(验证漏洞存在)
+​	exp: 利用脚本
+RCE （远程命令或代码执行）-&gt;用户输入的数据被当系统&#x2F;后端代码执行  
+文件包含、反序列化、命令执行属于RCE(范围广)
+区别：
+代码执行：用户输入的数据被当后端代码执行 (var_dump())
+命令执行：用户输入的数据被当系统命令执行 (cmd bash)
+后端代码可以调用系统函数 
+系统命令可以写文件产生webshell
+1.eval($a);&#x2F;&#x2F;将字符串当做后端代码执行，且可以多行
+2.assert($a);&#x2F;&#x2F;将字符串当做后端代码执行，单行
+写文件执行 file_put_contents()
+3.echo preg_replace(‘&#x2F;b&#x2F;e’,$_GET[8],’bc’);             (正则表达式，替换成的值，原有值)
+
+原有字符串必须匹配正则表达式
+
+修正符:e 配 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E6%BC%8F%E6%B4%9E/" title="变量覆盖漏洞">变量覆盖漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T15:01:04.000Z" title="Created 2024-09-29 23:01:04">2024-09-29</time></span></div><div class="content">黑盒漏洞：不知道源码也能测
+​	SQL XSS 文件上传 逻辑漏洞 文件包含 代码执行 SSRF
+纯白盒漏洞:
+  变量覆盖 反序列化
+
+代码审计核心：找危险函数
+变量覆盖：
+&lt;?php $a=1;$a=2;echo $a;?&gt;
+1.函数1.extract($array)从数组中把变量导入到当前的符号表中   (数组中键值对赋值)
+例：
+
+传参gift&#x3D;1 test&#x3D;1
+2.parse_str()把查询字符串解析到变量中
+例：
+parse_str(&quot;name=Peter&amp;age=43&quot;) -&gt; $name&#x3D;Peter $age&#x3D;43
+parse_str(&quot;name=Peter&amp;age=43&quot;,$myArray) -&gt;把变量存到数组中
+3.import_request_variables(types ,[前缀])可在 register_global &#x3D; off 时,把 GET&#x2F;POST&#x2F;Cookie 变量导入全局作用域中
+GET POST  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/XXE/" title="XXE">XXE</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T15:00:39.000Z" title="Created 2024-09-29 23:00:39">2024-09-29</time></span></div><div class="content">一、XXE概念XXE –XML外部实体注入 目标执行了我们提交的xml代码
+XML ：可扩展标记语言（eXtensible Markup Language），用来传输和存储数据，不用于表现和展示数据(HTML)。标签未被预定义。仅为纯文本，可自己定义标签和结构。可被各种后端脚本调用。
+外部实体：
+&lt;?xml version&#x3D;”1.0”?&gt;                       –XML声明 
+&lt;!DOCTYPE ANY [ &lt;!ENTITY words “Hello XXE !”&gt;]&gt; 
+​                                                            –DTD部分(通过特殊命令去其他文件读取信息 SYSTEM)
+&lt;!DOCTYPE ANY [ &lt;!ENTITY words  SYSTEM “file:&#x2F;&#x2F;&#x2F;C:&#x2F;1.txt”&gt;]&gt; 
+&lt;root&gt;&words;&lt;&#x2F;root&gt;     ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/ssrf/" title="ssrf">ssrf</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T15:00:31.000Z" title="Created 2024-09-29 23:00:31">2024-09-29</time></span></div><div class="content">SSRF概念SSRF((Server-Side Request Forgery,服务器端请求伪造) 服务器因传参偷发数据包。SSRF攻击的目标是从外网无法访问的内部系统（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。攻击者伪造服务端的请求发起攻击，借由服务端为跳板来攻击目标系统。
+SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。
+CSRF –跨站&#x2F;客户端请求伪造 浏览器因js偷发数据包
+翻译软件
+单词： post&#x2F;get传参 数据库查询
+翻译网页：(两种情况)
+1.用户访问目标站点，翻译网页网站通过js获取用户页面显示信息，传递给翻译网页查询(难)
+2.翻译网站直接替代用户访问目标站点，获得内容后查询英文对应，处理完返回给用户(典型ssrf)
+ 通过查看外网的ip判断是哪种方式
+危害1.内外网的端口和服务扫描  dict:&#x2F;&#x2F;
+2.攻击运行在内网或本地的应用程序
+mysql -h 主机地址 -u 用户名 -p 用户密码 
+–如果端口未开放，访问不到  存在ssrf ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/%E9%9D%B6%E5%9C%BAgogogo/" title="靶场gogogo">靶场gogogo</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T14:57:26.000Z" title="Created 2024-09-29 22:57:26">2024-09-29</time></span></div><div class="content">任意文件包含漏洞1.pikachu-本地文件包含
+url上filename&#x3D;file1.php   参数用户可控  -&gt;可能是文件包含 
+猜测其他文件也是filex.php 其中x为数字 用bp爆破一下 爆破出来隐藏文件file6.php
+
+注：   ..&#x2F; 目录跳转
+windows:..&#x2F;..&#x2F;..&#x2F;..&#x2F;Windows&#x2F;System32&#x2F;drivers&#x2F;etc&#x2F;hostslinux:..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd
+
+源码：
+
+2.pikachu-远程文件包含php配置默认不开启远程文件包含
+开启 allow_url_include&#x3D;On  allow_url_fopen&#x3D;On
+自己写一个txt文件 远程访问 
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/buuctf/" title="buuctf">buuctf</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T14:57:03.000Z" title="Created 2024-09-29 22:57:03">2024-09-29</time></span></div><div class="content">Basic1.Linux Lab 1
+链接点进去没有任何有用的东西，跳回来看  ssh 映射地址 端口 启用ssh连接
+windows没有自带的ssh连接插件 linux有 用kali虚拟机尝试
+ssh -p 端口 用户名@地址
+
+2.BUU LFI COURSE 1
+
+isset()  检测变量是否为空
+LFI -&gt;local file include 本地文件包含
+危险函数：
+include()、include_once()、require()、require_once()
+传参file&#x3D;&#x2F;flag 显示
+
+?file&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log ：包含ngnix的日志记录
+apache 默认站点主目录 &#x2F;var&#x2F;www.html
+3.BUU BRUTE 1brute force 暴力破解 
+用bp爆破 先破用户名 再破密码
+
+
+Misc1.金三胖出现一个gif动图 一闪而过一个红色的flag
+考点：隐写
+1.photoshop可一帧一帧地查找
+
+2.Stegso ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/hello/" title="hello">hello</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T14:31:40.000Z" title="Created 2024-09-29 22:31:40">2024-09-29</time></span></div><div class="content">Hello world
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/29/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-29T12:25:51.205Z" title="Created 2024-09-29 20:25:51">2024-09-29</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" title="支付、越权漏洞">支付、越权漏洞</a><time datetime="2024-09-29T15:02:16.000Z" title="Created 2024-09-29 23:02:16">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="任意文件包含漏洞">任意文件包含漏洞</a><time datetime="2024-09-29T15:02:00.000Z" title="Created 2024-09-29 23:02:00">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" title="代码执行漏洞">代码执行漏洞</a><time datetime="2024-09-29T15:01:18.000Z" title="Created 2024-09-29 23:01:18">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E6%BC%8F%E6%B4%9E/" title="变量覆盖漏洞">变量覆盖漏洞</a><time datetime="2024-09-29T15:01:04.000Z" title="Created 2024-09-29 23:01:04">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/XXE/" title="XXE">XXE</a><time datetime="2024-09-29T15:00:39.000Z" title="Created 2024-09-29 23:00:39">2024-09-29</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">September 2024</span><span class="card-archive-list-count">10</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">10</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-09-29T15:49:28.841Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

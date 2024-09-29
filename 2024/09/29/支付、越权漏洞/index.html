@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>支付、越权漏洞 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="支付漏洞属于逻辑漏洞  发散思维 快捷支付原理 商户网站接入支付结果有两种方式： (1)浏览器跳转通知 很少 用户支付成功直接关闭页面，商户收不到支付结果通知。且浏览器数据包易篡改 (2)服务器端异步通知  一般 该方式是支付公司服务器后台直接向用户指定的异步通知URL发送参数，采用POST或GET的方式。商户网站接收异部参数的URL对应的程序中，要对支付公司返回的支付结果进行签名验证，成功后进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支付、越权漏洞">
+<meta property="og:url" content="http://example.com/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="支付漏洞属于逻辑漏洞  发散思维 快捷支付原理 商户网站接入支付结果有两种方式： (1)浏览器跳转通知 很少 用户支付成功直接关闭页面，商户收不到支付结果通知。且浏览器数据包易篡改 (2)服务器端异步通知  一般 该方式是支付公司服务器后台直接向用户指定的异步通知URL发送参数，采用POST或GET的方式。商户网站接收异部参数的URL对应的程序中，要对支付公司返回的支付结果进行签名验证，成功后进行">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-09-29T15:02:16.000Z">
+<meta property="article:modified_time" content="2024-09-29T15:07:36.422Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '支付、越权漏洞',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-29 23:07:36'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">支付、越权漏洞</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-09-29T15:02:16.000Z" title="Created 2024-09-29 23:02:16">2024-09-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-09-29T15:07:36.422Z" title="Updated 2024-09-29 23:07:36">2024-09-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="支付、越权漏洞"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="支付漏洞"><a href="#支付漏洞" class="headerlink" title="支付漏洞"></a>支付漏洞</h1><p>属于逻辑漏洞  发散思维</p>
+<h2 id="快捷支付原理"><a href="#快捷支付原理" class="headerlink" title="快捷支付原理"></a>快捷支付原理</h2><p> 商户网站接入支付结果有两种方式：</p>
+<p>(1)浏览器跳转通知 很少</p>
+<p>用户支付成功直接关闭页面，商户收不到支付结果通知。且浏览器数据包易篡改</p>
+<p>(2)服务器端异步通知  一般</p>
+<p>该方式是支付公司服务器后台直接向用户指定的异步通知URL发送参数，采用POST或GET的方式。商户网站接收异部参数的URL对应的程序中，要对支付公司返回的支付结果进行签名验证，成功后进行支付逻辑处理，如验证金额、订单信息是否与发起支付时一致，验证正常则对订单进行状态处理或为用户进行网站内入账等</p>
+<h2 id="常见支付漏洞"><a href="#常见支付漏洞" class="headerlink" title="常见支付漏洞"></a>常见支付漏洞</h2><p>1.修改支付价格</p>
+<p>支付—订购、订单、付款</p>
+<p>三个步骤当中的随便一个步骤进行修改价格测试，如果前面两步有验证机制，那么你可在最后一步付款时进行抓包尝试修改金额，如果没有在最后一步做好检验，那么问题就会存在，其修改的金额值你可以尝试小数目或者尝试负数。</p>
+<p>2.修改支付状态</p>
+<p>把付过款的orderid给未付款的，未付款订单变为已付款</p>
+<p>3.修改订单数量</p>
+<p>88*(-1)+88*1&#x3D;0</p>
+<p>4.修改优惠券</p>
+<p>5.越权支付</p>
+<h3 id="如何挖掘"><a href="#如何挖掘" class="headerlink" title="如何挖掘"></a>如何挖掘</h3><p>找到关键数据包</p>
+<p>分析数据包 对各个参数(账号，金额，余额，优惠等)进行分析</p>
+<p>不按套路</p>
+<p>pc端尝试，wap端，app端多尝试</p>
+<p>app抓包：安卓模拟器，夜神模拟器</p>
+<h3 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h3><p>后端检验每一项值</p>
+<p>校验价格、数量参数</p>
+<p>与第三方支付平台检查</p>
+<p>支付参数加密</p>
+<p>金额超过一定阈值，进行人工审核</p>
+<h1 id="越权"><a href="#越权" class="headerlink" title="越权"></a>越权</h1><p>越权：低权限用户，进行高权限操作或平级操作 （网站、网页、app）</p>
+<p>提权：低权限用户提到高权限（计算机权限 用户权限-&gt;管理权限）</p>
+<p>逻辑安全漏洞 —&gt;程序设计思路有问题</p>
+<p>sql注入 xss csrf 文件上传  —&gt; 代码方面有问题 不需要人也能测,漏扫(swvs,极光)</p>
+<p>分类</p>
+<p>水平越权：同权限用户可相互影响</p>
+<p>垂直越权：不同权限用户可相互影响</p>
+<p>交叉越权：既水平又垂直</p>
+<p>方法:</p>
+<p>传参id分析(get post cookie) –burp</p>
+<p>注：</p>
+<p>未授权访问漏洞 不需要登录 1.禁用js–asp站点多</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/">http://example.com/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/09/29/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="任意文件包含漏洞"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">任意文件包含漏洞</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.</span> <span class="toc-text">支付漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E6%94%AF%E4%BB%98%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">快捷支付原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%94%AF%E4%BB%98%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.2.</span> <span class="toc-text">常见支付漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%8C%96%E6%8E%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">如何挖掘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">防御</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%8A%E6%9D%83"><span class="toc-number">2.</span> <span class="toc-text">越权</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" title="支付、越权漏洞">支付、越权漏洞</a><time datetime="2024-09-29T15:02:16.000Z" title="Created 2024-09-29 23:02:16">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="任意文件包含漏洞">任意文件包含漏洞</a><time datetime="2024-09-29T15:02:00.000Z" title="Created 2024-09-29 23:02:00">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" title="代码执行漏洞">代码执行漏洞</a><time datetime="2024-09-29T15:01:18.000Z" title="Created 2024-09-29 23:01:18">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E6%BC%8F%E6%B4%9E/" title="变量覆盖漏洞">变量覆盖漏洞</a><time datetime="2024-09-29T15:01:04.000Z" title="Created 2024-09-29 23:01:04">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/XXE/" title="XXE">XXE</a><time datetime="2024-09-29T15:00:39.000Z" title="Created 2024-09-29 23:00:39">2024-09-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
